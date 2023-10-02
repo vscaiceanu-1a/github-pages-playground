@@ -8,17 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up boolean variables
-      id: vars
-      run: |
-        echo "::set-output name=isTrue::true"
-        echo "::set-output name=isFalse::false"
-
     - name: Evaluate and print based on boolean value
       run: |
-        if [ "${{ steps.vars.outputs.isTrue }}" == "true" ]; then
-          echo "The isTrue variable is indeed true!"
-        fi
-        if [ "${{ steps.vars.outputs.isFalse }}" == "false" ]; then
-          echo "The isFalse variable is indeed false!"
-        fi
+        echo " ${{ false && 'a' }}"
+        echo " ${{ false && 'a' || 'b' }}"
+        echo " ${{ true && 'a' }}"
+        echo " ${{ true && 'a' || 'b' }}"
